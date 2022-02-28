@@ -9,7 +9,7 @@ namespace market.API.Domain.Repositories
     Task<IEnumerable<Category>> ListAsync();
     Task AddAsync(Category category);
     Task<Category> FindByIdAsync(int id);
-    void Update(Category category);
-    void Remove(Category category);
+    Task Update(int id, Category category);
+    Task<Category> RemoveByIdAsync(int id);
   }
 }

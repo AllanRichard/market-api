@@ -10,10 +10,12 @@ namespace market.API.Controllers
   public class CategoryController : Controller
   {
     private readonly ICategoryService _categoryService;
+    private readonly IProductService _productService;
 
-    public CategoryController(ICategoryService categoryService)
+    public CategoryController(ICategoryService categoryService, IProductService productService)
     {
       _categoryService = categoryService;
+      _productService = productService;
     }
 
     [HttpGet]
@@ -23,6 +25,33 @@ namespace market.API.Controllers
       return categories;
     }
 
+    [HttpGet("{id}")]
+    public async Task<Category> FindByIdAsync(int id)
+    {
+      return await _categoryService.FindByIdAsync(id);
+    }
 
+    [HttpPost]
+    public async Task AddAsync([FromBody] Category category)
+    {
+      await _categoryService.AddAsync(category);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<ActionResult> Update(int id, [FromBody] Category category)
+    {
+      if (category.Id != id)
+      {
+        return BadRequest();
+      }
+      await _categoryService.Update(id, category);
+      return Ok();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<Category> RemoveByIdAsync(int id)
+    {
+      return await _categoryService.RemoveByIdAsync(id);
+    }
   }
 }

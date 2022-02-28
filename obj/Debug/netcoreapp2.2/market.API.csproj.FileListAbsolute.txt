@@ -3,8 +3,6 @@ C:\Users\Allan\Desktop\Prova_API_C#\market.API\bin\Debug\netcoreapp2.2\market.AP
 C:\Users\Allan\Desktop\Prova_API_C#\market.API\bin\Debug\netcoreapp2.2\market.API.runtimeconfig.dev.json
 C:\Users\Allan\Desktop\Prova_API_C#\market.API\bin\Debug\netcoreapp2.2\market.API.dll
 C:\Users\Allan\Desktop\Prova_API_C#\market.API\bin\Debug\netcoreapp2.2\market.API.pdb
-C:\Users\Allan\Desktop\Prova_API_C#\market.API\obj\Debug\netcoreapp2.2\market.API.csprojAssemblyReference.cache
-C:\Users\Allan\Desktop\Prova_API_C#\market.API\obj\Debug\netcoreapp2.2\market.API.csproj.CoreCompileInputs.cache
 C:\Users\Allan\Desktop\Prova_API_C#\market.API\obj\Debug\netcoreapp2.2\market.API.RazorAssemblyInfo.cache
 C:\Users\Allan\Desktop\Prova_API_C#\market.API\obj\Debug\netcoreapp2.2\market.API.RazorAssemblyInfo.cs
 C:\Users\Allan\Desktop\Prova_API_C#\market.API\obj\Debug\netcoreapp2.2\market.API.AssemblyInfoInputs.cache
@@ -12,3 +10,7 @@ C:\Users\Allan\Desktop\Prova_API_C#\market.API\obj\Debug\netcoreapp2.2\market.AP
 C:\Users\Allan\Desktop\Prova_API_C#\market.API\obj\Debug\netcoreapp2.2\market.API.RazorTargetAssemblyInfo.cache
 C:\Users\Allan\Desktop\Prova_API_C#\market.API\obj\Debug\netcoreapp2.2\market.API.dll
 C:\Users\Allan\Desktop\Prova_API_C#\market.API\obj\Debug\netcoreapp2.2\market.API.pdb
+C:\Users\Allan\Desktop\Prova_API_C#\market.API\obj\Debug\netcoreapp2.2\market.API.csprojAssemblyReference.cache
+C:\Users\Allan\Desktop\Prova_API_C#\market.API\bin\Debug\netcoreapp2.2\appsettings.Development.json
+C:\Users\Allan\Desktop\Prova_API_C#\market.API\bin\Debug\netcoreapp2.2\appsettings.json
+C:\Users\Allan\Desktop\Prova_API_C#\market.API\bin\Debug\netcoreapp2.2\Properties\launchSettings.json

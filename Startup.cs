@@ -31,7 +31,7 @@ namespace market.API
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-      services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+      services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
       services.AddDbContext<AppDbContext>(options =>
       {
@@ -40,12 +40,14 @@ namespace market.API
 
       services.AddScoped<ICategoryRepository, CategoryRepository>();
       services.AddScoped<ICategoryService, CategoryService>();
+      services.AddScoped<IProductRepository, ProductRepository>();
+      services.AddScoped<IProductService, ProductService>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-      if (env.IsDevelopment())
+      if (env.EnvironmentName.Equals("Development"))
       {
         app.UseDeveloperExceptionPage();
       }

@@ -18,7 +18,8 @@ namespace market.API.Persistence.Repositories
 
     public async Task AddAsync(Category category)
     {
-      await _context.Categories.AddAsync(category);
+      _context.Categories.Add(category);
+      await _context.SaveChangesAsync();
     }
 
     public async Task<Category> FindByIdAsync(int id)
@@ -26,14 +27,23 @@ namespace market.API.Persistence.Repositories
       return await _context.Categories.FindAsync(id);
     }
 
-    public void Remove(Category category)
+    public async Task Update(int id, Category category)
     {
-      _context.Categories.Remove(category);
+      _context.Entry(category).State = EntityState.Modified;
+      await _context.SaveChangesAsync();
     }
 
-    public void Update(Category category)
+    public async Task<Category> RemoveByIdAsync(int id)
     {
-      _context.Categories.Update(category);
+      var categoryToDelete = await _context.Categories.FirstOrDefaultAsync(e => e.Id == id);
+
+      if (categoryToDelete != null)
+      {
+        _context.Categories.Remove(categoryToDelete);
+        await _context.SaveChangesAsync();
+        return categoryToDelete;
+      }
+      return null;
     }
   }
 }

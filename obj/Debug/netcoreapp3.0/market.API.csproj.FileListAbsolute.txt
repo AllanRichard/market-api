@@ -1,0 +1,6 @@
+C:\Users\Allan\Desktop\Prova_API_C#\market.API\obj\Debug\netcoreapp3.0\market.API.csprojAssemblyReference.cache
+C:\Users\Allan\Desktop\Prova_API_C#\market.API\obj\Debug\netcoreapp3.0\staticwebassets\market.API.StaticWebAssets.Manifest.cache
+C:\Users\Allan\Desktop\Prova_API_C#\market.API\obj\Debug\netcoreapp3.0\staticwebassets\market.API.StaticWebAssets.xml
+C:\Users\Allan\Desktop\Prova_API_C#\market.API\obj\Debug\netcoreapp3.0\market.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Allan\Desktop\Prova_API_C#\market.API\obj\Debug\netcoreapp3.0\market.API.AssemblyInfoInputs.cache
+C:\Users\Allan\Desktop\Prova_API_C#\market.API\obj\Debug\netcoreapp3.0\market.API.AssemblyInfo.cs
