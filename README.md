@@ -6,7 +6,7 @@ Vamos ao passo-a-passo para executar o **Market API**.
 - [Postman](https://www.postman.com/downloads/) **(Opcional)**.
 
 ### Execução:
-- Abra o projeto, como esse projeto foi feito no **Visual Studio Code**, os procedimentos vai ser com base nessa **IDE**.
+- Abra o projeto, como foi feito no **Visual Studio Code**, os procedimentos vai ser com base nessa **IDE**.
 - Após abrir, execute os comandos na sequência: 
 ``` dotnet restore ```
 ``` dotnet build ```
