@@ -38,10 +38,5 @@ namespace market.API.Services
     {
       return await _productRepository.RemoveByIdAsync(id);
     }
-
-    public async Task<Product> FindProductByCategoryId(int id)
-    {
-      return await _productRepository.FindProductByCategoryId(id);
-    }
   }
 }

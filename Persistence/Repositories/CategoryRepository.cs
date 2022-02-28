@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using market.API.Domain.Models;
 using market.API.Domain.Repositories;
 using market.API.Persistence.Contexts;
+using market.API.Resources;
 
 namespace market.API.Persistence.Repositories
 {
@@ -35,13 +36,18 @@ namespace market.API.Persistence.Repositories
 
     public async Task<Category> RemoveByIdAsync(int id)
     {
-      var categoryToDelete = await _context.Categories.FirstOrDefaultAsync(e => e.Id == id);
+      var productFindByCategoryId = await _context.Products.FirstOrDefaultAsync(e => e.CategoryId == id);
 
-      if (categoryToDelete != null)
+      if (productFindByCategoryId == null)
       {
-        _context.Categories.Remove(categoryToDelete);
-        await _context.SaveChangesAsync();
-        return categoryToDelete;
+        var categoryToDelete = await _context.Categories.FirstOrDefaultAsync(e => e.Id == id);
+
+        if (categoryToDelete != null)
+        {
+          _context.Categories.Remove(categoryToDelete);
+          await _context.SaveChangesAsync();
+          return categoryToDelete;
+        }
       }
       return null;
     }

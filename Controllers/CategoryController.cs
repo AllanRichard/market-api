@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using market.API.Domain.Models;
 using market.API.Domain.Services;
+using market.API.Resources;
+using AutoMapper;
 
 namespace market.API.Controllers
 {
@@ -10,36 +12,50 @@ namespace market.API.Controllers
   public class CategoryController : Controller
   {
     private readonly ICategoryService _categoryService;
-    private readonly IProductService _productService;
+    private readonly IMapper _mapper;
 
-    public CategoryController(ICategoryService categoryService, IProductService productService)
+    public CategoryController(ICategoryService categoryService, IMapper mapper)
     {
       _categoryService = categoryService;
-      _productService = productService;
+      _mapper = mapper;
     }
 
     [HttpGet]
-    public async Task<IEnumerable<Category>> GetAllAsync()
+    public async Task<ActionResult<IEnumerable<CategoryResource>>> GetAllAsync()
     {
       var categories = await _categoryService.ListAsync();
-      return categories;
+      var resources = _mapper.Map<IEnumerable<Category>, IEnumerable<CategoryResource>>(categories);
+      if (resources != null)
+      {
+        return Ok(resources);
+      }
+      return NotFound();
     }
 
     [HttpGet("{id}")]
-    public async Task<Category> FindByIdAsync(int id)
+    public async Task<ActionResult> FindByIdAsync(int id)
     {
-      return await _categoryService.FindByIdAsync(id);
+      var findByIdAsync = await _categoryService.FindByIdAsync(id);
+      var category = _mapper.Map<CategoryResource>(findByIdAsync);
+      if (category != null)
+      {
+        return Ok(category);
+      }
+      return NotFound();
     }
 
     [HttpPost]
-    public async Task AddAsync([FromBody] Category category)
+    public async Task<ActionResult> AddAsync([FromBody] CategoryResource categoryResource)
     {
+      var category = _mapper.Map<Category>(categoryResource);
       await _categoryService.AddAsync(category);
+      return Ok();
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult> Update(int id, [FromBody] Category category)
+    public async Task<ActionResult> Update(int id, [FromBody] CategoryResource categoryResource)
     {
+      var category = _mapper.Map<Category>(categoryResource);
       if (category.Id != id)
       {
         return BadRequest();
@@ -49,9 +65,14 @@ namespace market.API.Controllers
     }
 
     [HttpDelete("{id}")]
-    public async Task<Category> RemoveByIdAsync(int id)
+    public async Task<ActionResult> RemoveByIdAsync(int id)
     {
-      return await _categoryService.RemoveByIdAsync(id);
+      var removeByIdAsync = await _categoryService.RemoveByIdAsync(id);
+      if (removeByIdAsync != null)
+      {
+        return Ok(removeByIdAsync);
+      }
+      return BadRequest();
     }
   }
 }

@@ -1,5 +1,6 @@
 HELP.md
 bin/
+obj/
 
 ### VS Code ###
 .vscode/

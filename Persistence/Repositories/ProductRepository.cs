@@ -13,7 +13,7 @@ namespace market.API.Persistence.Repositories
 
     public async Task<IEnumerable<Product>> ListAsync()
     {
-      return await _context.Products.ToListAsync();
+      return await _context.Products.Include(p => p.Category).ToListAsync();
     }
 
     public async Task AddAsync(Product product)
@@ -24,7 +24,7 @@ namespace market.API.Persistence.Repositories
 
     public async Task<Product> FindByIdAsync(int id)
     {
-      return await _context.Products.FindAsync(id);
+      return await _context.Products.Include(p => p.Category).FirstOrDefaultAsync(p => p.Id == id);
     }
 
     public async Task Update(int id, Product product)
@@ -44,12 +44,6 @@ namespace market.API.Persistence.Repositories
         return productToDelete;
       }
       return null;
-    }
-
-    public async Task<Product> FindProductByCategoryId(int id)
-    {
-      var productByCategoryId = await _context.Products.FirstOrDefaultAsync(e => e.CategoryId == id);
-      return productByCategoryId;
     }
   }
 }

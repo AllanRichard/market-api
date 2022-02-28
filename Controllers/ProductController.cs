@@ -1,8 +1,10 @@
+using AutoMapper;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using market.API.Domain.Models;
 using market.API.Domain.Services;
+using market.API.Resources;
 
 namespace market.API.Controllers
 {
@@ -10,34 +12,48 @@ namespace market.API.Controllers
   public class ProductController : Controller
   {
     private readonly IProductService _productService;
+    private readonly IMapper _mapper;
 
-    public ProductController(IProductService productService)
+    public ProductController(IProductService productService, IMapper mapper)
     {
       _productService = productService;
+      _mapper = mapper;
     }
 
     [HttpGet]
-    public async Task<IEnumerable<Product>> GetAllAsync()
+    public async Task<ActionResult<IEnumerable<ProductResource>>> GetAllAsync()
     {
       var products = await _productService.ListAsync();
-      return products;
+      var resources = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductResource>>(products);
+      if(resources != null) {
+        return Ok(resources);
+      }
+      return NotFound();
     }
 
     [HttpGet("{id}")]
-    public async Task<Product> FindByIdAsync(int id)
+    public async Task<ActionResult> FindByIdAsync(int id)
     {
-      return await _productService.FindByIdAsync(id);
+      var findByIdAsync = await _productService.FindByIdAsync(id);
+      var product = _mapper.Map<ProductResource>(findByIdAsync);
+      if (product != null) {
+        return Ok(product);
+      }
+      return NotFound();
     }
 
     [HttpPost]
-    public async Task AddAsync([FromBody] Product product)
+    public async Task<ActionResult> AddAsync([FromBody] ProductResourceSave productResourceSave)
     {
+      var product = _mapper.Map<Product>(productResourceSave);
       await _productService.AddAsync(product);
+      return Ok();
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult> Update(int id, [FromBody] Product product)
+    public async Task<ActionResult> Update(int id, [FromBody] ProductResourceSave productResourceSave)
     {
+      var product = _mapper.Map<Product>(productResourceSave);
       if (product.Id != id)
       {
         return BadRequest();
@@ -47,14 +63,13 @@ namespace market.API.Controllers
     }
 
     [HttpDelete("{id}")]
-    public async Task<Product> RemoveByIdAsync(int id)
+    public async Task<ActionResult> RemoveByIdAsync(int id)
     {
-      return await _productService.RemoveByIdAsync(id);
-    }
-
-    public async Task<Product> FindProductByCategoryId(int id)
-    {
-      return await _productService.FindProductByCategoryId(id);
+      var removeByIdAsync = await _productService.RemoveByIdAsync(id);
+      if (removeByIdAsync != null) {
+        return Ok(removeByIdAsync);
+      }
+      return BadRequest();
     }
   }
 }

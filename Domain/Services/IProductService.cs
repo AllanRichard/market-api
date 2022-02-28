@@ -11,6 +11,5 @@ namespace market.API.Domain.Services
     Task AddAsync(Product product);
     Task Update(int id, Product product);
     Task<Product> RemoveByIdAsync(int id);
-    Task<Product> FindProductByCategoryId(int id);
   }
 }

@@ -30,7 +30,7 @@ namespace market.API.Persistence.Contexts
       builder.Entity<Product>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
       builder.Entity<Product>().Property(p => p.Name).IsRequired().HasMaxLength(250);
       builder.Entity<Product>().Property(p => p.Price).IsRequired();
-      builder.Entity<Product>().HasOne(p => p.Category).WithMany(e => e.Products).OnDelete(DeleteBehavior.SetNull);
+      //builder.Entity<Product>().HasOne(p => p.Category).WithMany(e => e.Products).OnDelete(DeleteBehavior.SetNull);
 
       builder.Entity<Product>().HasData(
         new Product { Id = 1, Name = "Maçã", Price = 1, CategoryId = 1 },
