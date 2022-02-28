@@ -8,9 +8,9 @@ Vamos ao passo-a-passo para executar o **Market API**.
 ### Execução:
 - Abra o projeto, como foi feito no **Visual Studio Code**, os procedimentos vão ser com base nessa **IDE**.
 - Após abrir, execute os comandos na sequência:
-> **dotnet restore** 
-> **dotnet build**
-> **dotnet run**
+``` dotnet restore ```
+``` dotnet build ```
+``` dotnet run ```
 - Em seguida, pode-se usar o Postman ou Navegador para consultar API pela URL:
 ``` http://localhost:5001/api/categories ``` ou ``` http://localhost:5000/api/categories ```
 ``` http://localhost:5001/api/products ``` ou ``` http://localhost:5000/api/products ```
