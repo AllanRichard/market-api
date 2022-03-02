@@ -1147,11 +1147,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Allan\\Desktop\\Prova_API_C#\\market.API\\market.API.csproj",
+      "projectUniqueName": "C:\\Users\\Allan\\Desktop\\Prova_API_C#\\market.API\\market.API.csproj",
       "projectName": "market.API",
-      "projectPath": "c:\\Users\\Allan\\Desktop\\Prova_API_C#\\market.API\\market.API.csproj",
+      "projectPath": "C:\\Users\\Allan\\Desktop\\Prova_API_C#\\market.API\\market.API.csproj",
       "packagesPath": "C:\\Users\\Allan\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Allan\\Desktop\\Prova_API_C#\\market.API\\obj\\",
+      "outputPath": "C:\\Users\\Allan\\Desktop\\Prova_API_C#\\market.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -47,6 +47,10 @@ namespace market.API.Controllers
     [HttpPost]
     public async Task<ActionResult> AddAsync([FromBody] CategoryResource categoryResource)
     {
+      if (!ModelState.IsValid)
+      {
+        return BadRequest(ModelState);
+      }
       var category = _mapper.Map<Category>(categoryResource);
       await _categoryService.AddAsync(category);
       return Ok();

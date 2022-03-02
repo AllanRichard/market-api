@@ -25,7 +25,8 @@ namespace market.API.Controllers
     {
       var products = await _productService.ListAsync();
       var resources = _mapper.Map<IEnumerable<Product>, IEnumerable<ProductResource>>(products);
-      if(resources != null) {
+      if (resources != null)
+      {
         return Ok(resources);
       }
       return NotFound();
@@ -36,7 +37,8 @@ namespace market.API.Controllers
     {
       var findByIdAsync = await _productService.FindByIdAsync(id);
       var product = _mapper.Map<ProductResource>(findByIdAsync);
-      if (product != null) {
+      if (product != null)
+      {
         return Ok(product);
       }
       return NotFound();
@@ -45,6 +47,10 @@ namespace market.API.Controllers
     [HttpPost]
     public async Task<ActionResult> AddAsync([FromBody] ProductResourceSave productResourceSave)
     {
+      if (!ModelState.IsValid)
+      {
+        return BadRequest(ModelState);
+      }
       var product = _mapper.Map<Product>(productResourceSave);
       await _productService.AddAsync(product);
       return Ok();
@@ -66,10 +72,11 @@ namespace market.API.Controllers
     public async Task<ActionResult> RemoveByIdAsync(int id)
     {
       var removeByIdAsync = await _productService.RemoveByIdAsync(id);
-      if (removeByIdAsync != null) {
+      if (removeByIdAsync != null)
+      {
         return Ok(removeByIdAsync);
       }
-      return BadRequest();
+      return NotFound();
     }
   }
 }
