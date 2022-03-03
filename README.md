@@ -17,6 +17,10 @@ Vamos ao passo-a-passo para executar o **Market API**.
 > **Nota:** Caso esteja usando o Postman, é necessário desativar a configurações **Enable SSL certificate verification**.
 - Para executar testes melhores, também é possível usar o **Swagger**, acessando https://localhost:5001/swagger/index.html.
 
+### Heroku:
+https://marketapi1.herokuapp.com/swagger/index.html
+``` https://marketapi1.herokuapp.com/api/products ``` ou ``` https://marketapi1.herokuapp.com/api/categories ```
+
 ### Pacotes Utilizados: 
 - AutoMapper versão 11.0.1
 - AutoMapper Dependency Injection 11.0.0
